@@ -1,0 +1,12 @@
+<?php 
+    require(ROUTE_DIR."lib/session.php"); 
+    require(ROUTE_DIR."lib/autorisation.php");   
+    require(ROUTE_DIR."lib/validators.php");
+    require(ROUTE_DIR."lib/upload.php");  
+    require(ROUTE_DIR."lib/database.php");
+    require(ROUTE_DIR."models/user.model.php");  
+    require(ROUTE_DIR."models/zone.model.php");  
+    require(ROUTE_DIR."models/bien.model.php");  
+    require(ROUTE_DIR."models/reservation.model.php");  
+    require(ROUTE_DIR."models/role.model.php");  
+?>
