@@ -137,5 +137,23 @@
             return $biendispo;
         }
 
+        function change_etat_bien_where_bien_reserver(int $id_bien):int{
+            $pdo=ouvrir_connection_db();
+            $sql="UPDATE bien SET etat_bien = ? WHERE b.id_bien = ? ";
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array('indisponible',$id_bien));
+            fermer_connection_db($pdo);
+            return $sth->rowCount();
+        }
 
+        function find_bien_reservation_by_id_bien(int $id_bien){
+            $pdo=ouvrir_connection_db();
+            $sql=" SELECT b.* FROM bien b,reservation r
+                    where b.id_bien=r.id_bien
+                    and r.id_bien=? ";
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute(array($id_bien));
+            $biendispo = $sth->fetchAll();
+            fermer_connection_db($pdo);
+        }
 ?>

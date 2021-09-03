@@ -64,8 +64,6 @@ function filtre_bien(){
        
     }
 
-    function change_etat_bien_where_bien_reserver(){
-      
-    }
+   
 
 ?>
