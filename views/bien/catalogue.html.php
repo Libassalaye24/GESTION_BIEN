@@ -29,7 +29,9 @@
               <span class="float-left btn btn-sm text-center disabled"
                 ></span
               >
-              <a href="" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h"></i>Reserver</a>
+              <?php if(est_client()): ?>
+              <a href="<?= WEB_ROUTE.'?controlleurs=reservation&views=reserver.bien&id_bien='.$bien['id_bien']?>" class="btn btn-sm btn-outline-info float-right ml-3"><i class="fas fa-ellipsis-h"></i>Reserver</a>
+              <?php  endif ?>
               <a href="<?= WEB_ROUTE.'?controlleurs=bien&views=details&id_bien='.$bien['id_bien']?>" class="btn btn-sm btn-outline-success float-right"
                 >Details</a
               >
@@ -70,4 +72,5 @@
   
     <?php
          require(ROUTE_DIR.'views/imc/footer.html.php');
+         
        ?>

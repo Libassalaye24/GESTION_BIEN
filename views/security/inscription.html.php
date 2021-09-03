@@ -35,7 +35,9 @@
                             <img src="" alt="" srcset="">
                          <h3 class="card-title">S'inscrire</h3>
                             <p class="slogan">pour acceder aux fonctionnalités</p>
-                                
+                            <?php if (isset($arrayError['loginExist'])):?>
+                                <p class="slogan alert alert-danger"><?=$arrayError['loginExist']?></p>
+                                <?php endif ?>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -80,7 +82,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                         <label for="">Adresse</label>
-                                          <input type="text" name="nom" id="adresse" class="form-control" placeholder="entrer votre adresse" aria-describedby="helpId">
+                                          <input type="text" name="adresse" id="adresse" class="form-control" placeholder="entrer votre adresse" aria-describedby="helpId">
                                           <small class="text-danger">  
                                             <?= isset($arrayError['adresse']) ? $arrayError['adresse'] : ""; ?>
                                         </small>

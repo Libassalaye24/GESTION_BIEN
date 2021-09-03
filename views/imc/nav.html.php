@@ -32,7 +32,7 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <?php if(est_client()):?>
+          <?php if($_SESSION['userConnect']['nom_role']=='ROLE_CLIENT'):?>
             <li class="nav-item">
               <a class="nav-link" href="<?=WEB_ROUTE.'?controlleurs=reservation&views=reservation'?>">Mes Réservations</a>
             </li>
@@ -43,6 +43,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="<?=WEB_ROUTE.'?controlleurs=bien&views=liste.bien'?>">Biens</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?=WEB_ROUTE.'?controlleurs=bien&views=creer.bien'?>">Crer un bien</a>
             </li>
           <?php endif ?>
         </ul>

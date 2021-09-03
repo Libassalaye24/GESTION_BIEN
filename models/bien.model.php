@@ -40,6 +40,21 @@
             fermer_connection_db($pdo);
             return $biendispo;
         }
+        function filtre_bien_by_zone_or_etat($etat_bien='disponible',$zone_bien='dakar'):array{
+            $pdo=ouvrir_connection_db();
+            $params=array($etat_bien,$zone_bien);
+            $sql="select * from bien b,user u,zone z
+                    where b.id_user=u.id_user
+                    and b.id_zone=z.id_zone
+                     and b.etat_bien=?
+                     and z.nom_zone=? ";
+            $sth = $pdo->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $sth->execute($params);
+            $biendispo = $sth->fetchAll();
+           // var_dump($biendispo);die();
+            fermer_connection_db($pdo);
+            return $biendispo;
+        }
 
         function find_bien_reserver_by_client(int $id_user):array{
             $pdo=ouvrir_connection_db();

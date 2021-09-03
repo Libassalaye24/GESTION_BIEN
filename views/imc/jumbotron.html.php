@@ -11,8 +11,15 @@
           sapiente?
         </p>
         <p class="lead">
-          <a class="btn btn-primary btn-lg" href="<?=WEB_ROUTE.'?controlleurs=security&views=inscription'?>" role="button"
+          <?php if(!est_connect()): ?>
+            <a class="btn btn-primary btn-lg" href="<?=WEB_ROUTE.'?controlleurs=security&views=inscription'?>" role="button"
             >Créer un compte</a
-          >
+             >
+          <?php endif ?>
+          <?php if(est_gestionnaire()): ?>
+            <a class="btn btn-primary btn-lg" href="<?=WEB_ROUTE.'?controlleurs=bien&views=creer.bien'?>" role="button"
+            >Créer un Bien</a
+             >
+          <?php endif ?>
         </p>
       </div>

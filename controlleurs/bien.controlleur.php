@@ -5,19 +5,40 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
       if ($_GET['views']=='catalogue') {
          catalogue();
       }elseif ($_GET['views'] == 'details') {
-       
         details_bien();
-      
       }elseif($_GET['views'] == 'liste.bien') {
-        require(ROUTE_DIR.'views/gestionnaire/liste.bien.html.php');
+        filtre_bien();
       }
 
     }else {
         catalogue();
     }
     
+}elseif ($_SERVER['REQUEST_METHOD']=='POST') {
+    if (isset($_POST['action'])) {
+        if ($_POST['action']=='test') {
+      
+          $_SESSION['zone'] = $_POST['zone_bien'];
+          $_SESSION['etat'] = $_POST['etat_bien'];
+          filtre_bien();
+        }
+    }
 }
 
+
+
+function filtre_bien(){
+  if (isset($_POST['ok'])) {
+    $etat= $_SESSION['etat'];
+    $zone= $_SESSION['zone'];
+    $bien_by_zone_or_etat =  filtre_bien_by_zone_or_etat($etat,$zone);
+    require(ROUTE_DIR.'views/gestionnaire/liste.bien.html.php');
+  }else {
+    $bien_by_zone_or_etat =  filtre_bien_by_zone_or_etat();
+    require(ROUTE_DIR.'views/gestionnaire/liste.bien.html.php');
+  }
+
+}
     function add_bien(array $bien):bool{
         return true;
     }
@@ -41,6 +62,10 @@ if ($_SERVER['REQUEST_METHOD']=='GET') {
           require(ROUTE_DIR.'views/bien/details.html.php');
         }
        
+    }
+
+    function change_etat_bien_where_bien_reserver(){
+      
     }
 
 ?>
